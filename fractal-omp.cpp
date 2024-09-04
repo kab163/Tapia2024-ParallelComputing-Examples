@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
   printf("computing %d by %d fractal with a maximum depth of %d\n", width, width, maxdepth);
   
   thread_count = 4;
-  printf("there are %d threads with %d chunk size", thread_count, 1);
+  printf("there are %d threads with %d chunk size\n", thread_count, 1);
   
   /* allocate arrays */
   cnt = (unsigned char *)malloc(width * width * sizeof(unsigned char));

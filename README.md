@@ -25,8 +25,8 @@ Take note of the runtime after running this serial fractal program. In my case, 
 what I saw:
 
 ```
-
-
+computing 1024 by 1024 fractal with a maximum depth of 256
+compute time: 1.56104206 s
 ```
 
 ## OpenMP Fractal
@@ -38,9 +38,11 @@ You can run the code with:
 
 ```
 gcc -fopenmp fractal-omp.cpp -o fractal-omp
-./fractal-omp 1024
+./fractal-omp 1024 256
 ``` 
 
+Note that for the OpenMP and MPI fractal codes need a second argument, the depth.
+I usually always pick 256 for the depth because that creates a fractal with good contrast.
 Similar as before, the executable just needs one argument, the width. Again, take
 note of the runtime from this OpenMP parallelization of the fractal code. How does it
 differ from the serial runtime?
@@ -48,8 +50,10 @@ differ from the serial runtime?
 In my case, this is what I saw after running the OpenMP version:
 
 ```
-
-
+Fractal v1.2
+computing 1024 by 1024 fractal with a maximum depth of 256
+there are 4 threads with 1 chunk size
+compute time: 0.4282 s
 ```
 
 ## MPI Fractal
@@ -74,12 +78,14 @@ Next, I can run with:
 ```
 mpiexec -n 2 fractal-mpi 1024 256
 ```
-
-In my case, after changing to 2 processes, this is the resulting output:
+This will run the fractal with 2 MPI ranks.
+In my case, after changing to 2 ranks, this is the resulting output:
 
 ```
-
-
+Fractal v1.2
+There are 2 processes available
+computing 1024 by 1024 fractal with a maximum depth of 256
+compute time: 1.0031 s
 ```
 
 ## DIY Fractal Implementations
